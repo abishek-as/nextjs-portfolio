@@ -1,4 +1,6 @@
-import { ThemeProvider } from "@/components/theme-provider";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -15,7 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Abishek A S - Portfolio",
-  description: "This a portfolio website for Abishek A S, showcasing my work and skills.",
+  description:
+    "This a portfolio website for Abishek A S, showcasing my work and skills.",
 };
 
 export default function RootLayout({
@@ -34,7 +37,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
