@@ -12,11 +12,11 @@ export default function Home() {
       <section className="py-4">
         <div className="container mx-auto px-4 xl:px-24">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-            <div id="experience" className="flex-1">
-              <ExperienceSection />
-            </div>
             <div id="skills" className="flex-1">
               <TechStack />
+            </div>
+            <div id="experience" className="flex-1">
+              <ExperienceSection />
             </div>
           </div>
         </div>

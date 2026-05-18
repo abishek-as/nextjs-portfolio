@@ -54,9 +54,9 @@ export const portfolioData: PortfolioData = {
   profileImage: "/hero/DP.jpg",
   social: [
     {
-      platform: "GitHub",
-      url: "https://github.com/abishek-as",
-      icon: "Github",
+      platform: "Resume",
+      url: "https://drive.google.com/file/d/1luDzcL22HLPrpWyOH5N1urDQotjCjFSz/view?usp=drive_link",
+      icon: "Resume",
     },
     {
       platform: "LinkedIn",
@@ -64,9 +64,19 @@ export const portfolioData: PortfolioData = {
       icon: "Linkedin",
     },
     {
+      platform: "GitHub",
+      url: "https://github.com/abishek-as",
+      icon: "Github",
+    },
+    {
       platform: "Email",
       url: "mailto:abishek.codes@outlook.com",
       icon: "Mail",
+    },
+    {
+      platform: "LeetCode",
+      url: "https://leetcode.com/u/Abishek_AS/",
+      icon: "LeetCode",
     },
   ],
   skills: {

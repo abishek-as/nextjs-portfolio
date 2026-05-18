@@ -1,9 +1,15 @@
 import { portfolioData } from "@/data/portfolio";
 import React from "react";
 import {
-  TbBrandGithub,
+  FaArrowUpRightFromSquare,
+  FaFilePdf,
+  FaLinkedinIn,
+} from "react-icons/fa6";
+import { FiGithub } from "react-icons/fi";
+import { IoMdMail } from "react-icons/io";
+import { SiLeetcode } from "react-icons/si";
+import {
   TbBrandInstagram,
-  TbBrandLinkedin,
   TbBrandMedium,
   TbBrandX,
   TbMail,
@@ -13,13 +19,15 @@ const iconMap: Record<
   string,
   React.ComponentType<{ size?: number; className?: string }>
 > = {
-  Github: TbBrandGithub,
-  Linkedin: TbBrandLinkedin,
+  Github: FiGithub,
+  Linkedin: FaLinkedinIn,
   Twitter: TbBrandX,
   X: TbBrandX,
   Instagram: TbBrandInstagram,
   Medium: TbBrandMedium,
-  Mail: TbMail,
+  Mail: IoMdMail,
+  LeetCode: SiLeetcode,
+  Resume: FaFilePdf, // or use a different icon if available
 };
 
 interface SocialIconsProps {
@@ -32,9 +40,8 @@ export function SocialIcons({
   className = "",
 }: SocialIconsProps) {
   return (
-    <div className={`flex items-center gap-4 ${className}`}>
+    <div className={`flex flex-nowrap items-center gap-4 ${className}`}>
       {portfolioData.social.map((link) => {
-        // Fallback to Mail if icon not found
         const Icon = iconMap[link.icon] || iconMap[link.platform] || TbMail;
 
         if (variant === "footer") {
@@ -52,17 +59,23 @@ export function SocialIcons({
           );
         }
 
-        // Default variant (Hero)
         return (
           <a
             key={link.platform}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full border-2 border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all"
+            className="group inline-flex items-center gap-3 rounded-full border-2 border-slate-700 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300 transition-all hover:border-primary hover:bg-slate-800 hover:text-primary sm:px-5 sm:py-3"
             aria-label={link.platform}
           >
-            <Icon size={22} />
+            <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-200 transition-colors group-hover:bg-primary group-hover:text-slate-900">
+              <Icon size={18} />
+            </div>
+            <span className="hidden sm:inline">{link.platform}</span>
+            <FaArrowUpRightFromSquare
+              size={16}
+              className="hidden sm:inline ml-auto text-slate-400 transition-colors group-hover:text-primary"
+            />
           </a>
         );
       })}

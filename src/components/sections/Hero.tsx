@@ -4,22 +4,9 @@ import { SocialIcons } from "@/components/ui/SocialIcons";
 import { portfolioData } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { TbArrowRight, TbDownload } from "react-icons/tb";
 
 export const HeroSection = React.memo(function HeroSection() {
-  const handleScrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    const element = document.getElementById("projects");
-
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      window.history.replaceState(null, "", window.location.pathname);
-    }
-  };
-
   return (
     <section
       id="about"
@@ -30,13 +17,13 @@ export const HeroSection = React.memo(function HeroSection() {
       <div className="absolute -right-20 -bottom-20 -z-10 h-96 w-96 rounded-full bg-secondary/20 blur-3xl opacity-50" />
 
       <div className="container z-10 mx-auto px-4 xl:px-24">
-        <div className="flex flex-col-reverse items-center justify-between gap-12 lg:flex-row">
-          {/* Left Content */}
+        <div className="flex flex-col-reverse items-center gap-4 lg:flex-row lg:items-start">
+          {/* Left Content - 40% */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex-1 text-center lg:text-left"
+            className="w-full lg:w-[50%] text-center lg:text-left"
           >
             <p className="mb-4 font-medium tracking-wide text-primary">
               Hi, I am
@@ -54,41 +41,23 @@ export const HeroSection = React.memo(function HeroSection() {
               {portfolioData.about}
             </p>
 
-            <div className="flex flex-col items-center gap-8 lg:items-start">
-              {/* Social Icons */}
-              <SocialIcons variant="default" />
-
-              {/* Buttons */}
-              <div className="flex flex-row flex-wrap items-center justify-center gap-4 lg:justify-start">
-                <Link
-                  href="#projects"
-                  onClick={handleScrollToProjects}
-                  className="flex w-42 items-center justify-center gap-2 rounded-full border-2 border-primary px-8 py-3 font-bold text-primary transition-all hover:bg-primary/10"
-                >
-                  Projects <TbArrowRight size={20} />
-                </Link>
-
-                <Link
-                  href="https://drive.google.com/file/d/1luDzcL22HLPrpWyOH5N1urDQotjCjFSz/view?usp=drive_link"
-                  target="_blank"
-                  className="flex w-42 items-center justify-center gap-2 rounded-full border-2 border-slate-700 px-8 py-3 font-bold text-slate-300 transition-all hover:bg-slate-800"
-                >
-                  Resume <TbDownload size={20} />
-                </Link>
+            <div className="flex flex-col items-center gap-4 lg:items-start">
+              <div className="flex flex-row flex-nowrap items-center justify-center gap-4 overflow-x-auto pb-1 lg:justify-start">
+                <SocialIcons variant="default" className="shrink-0" />
               </div>
             </div>
           </motion.div>
 
-          {/* Right Image */}
+          {/* Right Image - 60% */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-1 justify-center lg:justify-end"
+            className="w-full lg:w-[50%] flex justify-center lg:justify-start lg:pl-30 lg:-mt-6"
           >
             <div className="group relative h-64 w-64 perspective-1000 md:h-80 md:w-80 lg:h-96 lg:w-96">
               {/* Glow Background */}
-              <div className="absolute inset-0 rounded-4xl bg-linear-to-tr from-primary/25 to-secondary/25 opacity-40 rotate-6 transition-opacity duration-500" />
+              <div className="absolute inset-0 rotate-6 rounded-4xl bg-linear-to-tr from-primary/25 to-secondary/25 opacity-40 transition-opacity duration-500" />
 
               {/* Rotated Layer */}
               <div className="absolute inset-0 rotate-3 rounded-4xl border border-white/10 bg-slate-800/90 transition-transform duration-500 group-hover:rotate-6" />
